@@ -18,4 +18,13 @@ Ce guide explique comment configurer Selenium pour automatiser des tests d'inter
 
    ```bash
    npm init -y
-# projet-selenium
+
+2. **Installation de la dependance selenium-webdriver**  
+   Si ce n'est pas déjà fait, initialisez un projet Node.js avec la commande suivante :
+
+   ```bash
+   npm install selenium-webdriver
+
+
+
+
