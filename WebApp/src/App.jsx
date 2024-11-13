@@ -5,7 +5,6 @@ import './App.css'
 import Component from './Components/Component'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div>
