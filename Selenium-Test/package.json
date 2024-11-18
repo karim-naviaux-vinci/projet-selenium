@@ -9,8 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "selenium-webdriver": "^4.26.0"
-  }
+  },
+  "description": ""
 }
