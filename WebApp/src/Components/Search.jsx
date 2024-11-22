@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
 
-const Search = ({items}) => {
+const Search = ({ items }) => {
   const [query, setQuery] = useState("");
 
   const filteredItems = items.filter((item) =>
-    item[0].toLowerCase().includes(query.toLowerCase())
+    item.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
@@ -19,7 +19,11 @@ const Search = ({items}) => {
       />
       <ul>
         {filteredItems.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index}>
+            {item.split(new RegExp(`(${query.trim()})`, 'gi')).map((part, i) => 
+              part.toLowerCase() === query.trim().toLowerCase() ? <b key={i}>{part}</b> : part
+            )}
+          </li>
         ))}
       </ul>
     </div>
