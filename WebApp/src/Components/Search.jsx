@@ -5,7 +5,7 @@ const Search = ({items}) => {
   const [query, setQuery] = useState("");
 
   const filteredItems = items.filter((item) =>
-    item.toLowerCase().includes(query.toLowerCase())
+    item[0].toLowerCase().includes(query.toLowerCase())
   );
 
   return (
