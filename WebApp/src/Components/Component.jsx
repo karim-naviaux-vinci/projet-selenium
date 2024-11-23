@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 
 
 const Component = () => {
     return (
         <div>
-        <h1 id="title">Component</h1>
+        <h1 id="title">Selenium-Webdriver</h1>
         </div>
     );
 }
