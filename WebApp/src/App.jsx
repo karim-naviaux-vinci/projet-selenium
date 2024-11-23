@@ -15,6 +15,7 @@ function App() {
             <li className="nav-item"><a href="#search">Search</a></li>
             <li className="nav-item"><a href="#todolist">TodoList</a></li>
             <li className="nav-item"><a href="#counter">Counter</a></li>
+            <li className="nav-item"><a href="#download">Download</a></li>
           </ul>
         </nav>
       </header>
@@ -30,6 +31,9 @@ function App() {
         </section>
         <section id="counter" className="section">
           <Counter />
+        </section>
+        <section id="download" className="section">
+          <Download />
         </section>
       </div>
     </>
