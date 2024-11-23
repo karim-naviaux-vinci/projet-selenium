@@ -9,7 +9,7 @@ async function test() {
         const titleElement = await driver.findElement(By.id('title'));
         const text = await titleElement.getText();
 
-        if (text === 'Component') {
+        if (text === 'Selenium-Webdriver') {
             console.log('Test passed');
         } else {
             console.log('Test failed');
