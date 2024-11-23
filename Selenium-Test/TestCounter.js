@@ -1,59 +1,44 @@
 import { Builder, By, until } from "selenium-webdriver";
 
-async function testCounterComponent() {
+
+
+async function testCounter() {
   const driver = await new Builder().forBrowser("chrome").build();
+
   try {
-    // Charger l'application
+    // Accéder à l'application
     await driver.get("http://localhost:5173/");
 
-    // Attendre que le composant Counter soit visible
-    await driver.wait(until.elementLocated(By.tagName("h2")), 5000);
-
-    // Vérifier le texte initial du compteur
-    const counterElement = await driver.findElement(By.tagName("h2"));
-    const initialText = await counterElement.getText();
-    if (initialText === "Compteur : 0") {
-      console.log("Compteur initialisé à 0 - Test OK");
-    } else {
+    // Vérification de la valeur initiale
+    const counterValue = await driver.findElement(By.id("counter-value")).getText();
+    if (counterValue !== "0") {
       console.error("Erreur : Le compteur initial n'est pas correct");
     }
 
-    // Cliquer sur le bouton "Incrémenter"
-    const incrementButton = await driver.findElement(By.xpath("//button[text()='Incrémenter']"));
+    // Test de l'incrémentation
+    const incrementButton = await driver.findElement(By.id("increment-btn"));
     await incrementButton.click();
-
-    // Vérifier si le compteur a été incrémenté
-    const incrementedText = await counterElement.getText();
-    if (incrementedText === "Compteur : 1") {
-      console.log("Incrémentation réussie - Test OK");
-    } else {
+    const incrementedValue = await driver.findElement(By.id("counter-value")).getText();
+    if (incrementedValue !== "1") {
       console.error("Erreur : L'incrémentation n'a pas fonctionné");
     }
 
-    // Cliquer sur le bouton "Décrémenter"
-    const decrementButton = await driver.findElement(By.xpath("//button[text()='Décrémenter']"));
+    // Test de la décrémentation
+    const decrementButton = await driver.findElement(By.id("decrement-btn"));
     await decrementButton.click();
-
-    // Vérifier si le compteur a été décrémenté
-    const decrementedText = await counterElement.getText();
-    if (decrementedText === "Compteur : 0") {
-      console.log("Décrémentation réussie - Test OK");
-    } else {
+    const decrementedValue = await driver.findElement(By.id("counter-value")).getText();
+    if (decrementedValue !== "0") {
       console.error("Erreur : La décrémentation n'a pas fonctionné");
     }
 
-    // Cliquer sur le bouton "Réinitialiser"
-    const resetButton = await driver.findElement(By.xpath("//button[text()='Réinitialiser']"));
+    // Test de la réinitialisation
+    await incrementButton.click(); // Incrémente à 1
+    const resetButton = await driver.findElement(By.id("reset-btn"));
     await resetButton.click();
-
-    // Vérifier si le compteur a été réinitialisé
-    const resetText = await counterElement.getText();
-    if (resetText === "Compteur : 0") {
-      console.log("Réinitialisation réussie - Test OK");
-    } else {
+    const resetValue = await driver.findElement(By.id("counter-value")).getText();
+    if (resetValue !== "0") {
       console.error("Erreur : La réinitialisation n'a pas fonctionné");
     }
-
   } catch (error) {
     console.error("Erreur pendant le test :", error);
   } finally {
@@ -61,5 +46,5 @@ async function testCounterComponent() {
   }
 }
 
-// Lancer le test
-testCounterComponent().catch(console.error);
+testCounter().catch(console.error);
+
