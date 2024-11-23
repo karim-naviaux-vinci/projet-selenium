@@ -7,6 +7,7 @@ import Counter from "./Components/Counter";
 import Component from './Components/Component'
 import Search from './Components/Search'
 import TodoList from './Components/ListToDo';
+import Download from './Components/Download';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Search items={["Pomme", "Mandarine", "Orange", "Raisin"]} />
       <TodoList tab={["Etudier","Faire du sport","Lire un livre"]}/>
       <Counter /> 
+      <Download />
     </div>
   )
 }

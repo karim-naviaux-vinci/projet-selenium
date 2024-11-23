@@ -4,13 +4,18 @@
   "main": "TestComponent.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "selenium-webdriver": "^4.26.0"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "mocha": "^10.8.2"
+  }
 }
