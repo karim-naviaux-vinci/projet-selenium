@@ -1,6 +1,6 @@
-import { Builder, By, until } from 'selenium-webdriver';
+import { Builder, By } from 'selenium-webdriver';
 
-(async function testSearch () {
+(async function testSearch() {
     const driver = await new Builder().forBrowser('chrome').build();
 
     try {
@@ -8,7 +8,7 @@ import { Builder, By, until } from 'selenium-webdriver';
         await driver.get('http://localhost:5173'); // Remplacez par l'URL de votre application
 
         // Vérifier que la liste initiale contient tous les éléments
-        const items = await driver.findElements(By.css('ul > li'));
+        const items = await driver.findElements(By.css('#search-element > li')); // Utilisation de l'ID "search-element"
         console.log('Liste initiale :');
         for (let item of items) {
             const text = await item.getText();
@@ -19,11 +19,11 @@ import { Builder, By, until } from 'selenium-webdriver';
         }
 
         // Rechercher un terme valide
-        const searchBar = await driver.findElement(By.css('input[type="text"]'));
+        const searchBar = await driver.findElement(By.css('#search-input')); // Utilisation de l'ID "search-input"
         await searchBar.sendKeys('Pomme'); // entre la valeur "Pomme" dans la barre de recherche
         await driver.sleep(1000); // Attendre la mise à jour
 
-        const filteredItems = await driver.findElements(By.css('ul > li'));
+        const filteredItems = await driver.findElements(By.css('#search-element > li')); // Vérifie les résultats filtrés
         console.log('\nRésultats après recherche pour "Pomme" :');
         for (let item of filteredItems) {
             const text = await item.getText();
@@ -38,7 +38,7 @@ import { Builder, By, until } from 'selenium-webdriver';
         await searchBar.sendKeys('Banane'); // Un élément qui n'existe pas
         await driver.sleep(1000);
 
-        const noResults = await driver.findElements(By.css('ul > li'));
+        const noResults = await driver.findElements(By.css('#search-element > li')); // Vérifie les résultats filtrés
         console.log('\nRésultats après recherche pour "Banane" :', noResults.length);
         if (noResults.length !== 0) {
             throw new Error('La recherche pour "Banane" aurait dû retourner aucun résultat.');
