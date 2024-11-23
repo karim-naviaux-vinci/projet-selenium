@@ -3,18 +3,18 @@ import { Builder, By, until } from "selenium-webdriver";
 async function testCounter() {
   console.log("Démarrage du test Counter...");
 
-  const driver = await new Builder().forBrowser("chrome").build();
+  const driver = await new Builder().forBrowser("firefox").build();
 
   try {
-    // Accès à l'application
+    
     console.log("Accès à l'application à l'adresse http://localhost:5173/");
     await driver.get("http://localhost:5173/");
 
-    // Vérification de la valeur initiale
+
     console.log("Vérification de la valeur initiale du compteur...");
     const counterValueElement = await driver.wait(
       until.elementLocated(By.id("counter-value")),
-      5000 // Temps d'attente max : 5 secondes
+      1000 
     );
     const counterValue = await counterValueElement.getText();
     console.log("Valeur initiale trouvée :", counterValue);
