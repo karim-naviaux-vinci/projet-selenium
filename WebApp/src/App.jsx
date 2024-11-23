@@ -1,6 +1,6 @@
 import './App.css';
 import Counter from "./Components/Counter";
-import Component from './Components/Component';
+import Component from './Components/H1';
 import Search from './Components/Search';
 import TodoList from './Components/ListToDo';
 import Download from './Components/Download';

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PropTypes from 'prop-types';
 
 const Search = ({ items }) => {
@@ -9,19 +9,24 @@ const Search = ({ items }) => {
   );
 
   return (
-    <div>
-      <h2>Recherche</h2>
+    <div id="search-container">
+      <h2 id="search-title">Recherche</h2>
       <input
+        id="search-input"
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Rechercher..."
       />
-      <ul>
+      <ul id="search-element">
         {filteredItems.map((item, index) => (
-          <li key={index}>
-            {item.split(new RegExp(`(${query.trim()})`, 'gi')).map((part, i) => 
-              part.toLowerCase() === query.trim().toLowerCase() ? <b key={i}>{part}</b> : part
+          <li key={index} id={`search-item-${index}`}>
+            {item.split(new RegExp(`(${query.trim()})`, 'gi')).map((part, i) =>
+              part.toLowerCase() === query.trim().toLowerCase() ? (
+                <b key={i}>{part}</b>
+              ) : (
+                part
+              )
             )}
           </li>
         ))}
@@ -29,6 +34,7 @@ const Search = ({ items }) => {
     </div>
   );
 };
+
 Search.propTypes = {
   items: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
