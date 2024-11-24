@@ -5,7 +5,7 @@ import { Builder, By } from 'selenium-webdriver';
 
     try {
         // Ouvrir l'application
-        await driver.get('http://localhost:5173'); // Remplacez par l'URL de votre application
+        await driver.get('http://localhost:5173');
 
         // Vérifier que la liste initiale contient tous les éléments
         const items = await driver.findElements(By.css('#search-element > li')); // Utilisation de l'ID "search-element"
